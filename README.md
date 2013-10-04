@@ -9,4 +9,4 @@ Setup
 
 - edit inventory/hosts
 
-# ansible-playbook -i inventory/hosts setup_hdfs.yml
+ ansible-playbook -i inventory/hosts setup_hdfs.yml
