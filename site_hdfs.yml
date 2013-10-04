@@ -1,0 +1,16 @@
+---
+
+- name: setup hadoop node
+  hosts: hadoop_nodes
+  user: root
+  vars:
+    java_version: 7
+    hadoop_masters: 
+      - node10
+    hadoop_slaves: 
+      - node1
+      - node2
+  roles:
+  - bootstrap/ubuntu
+  - hadoop_node
+

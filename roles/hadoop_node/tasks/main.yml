@@ -1,0 +1,22 @@
+---
+
+- name: install java dependency
+  apt: pkg=openjdk-{{ java_version }}-jdk
+
+- name: symlink
+  shell: ln -s /usr/lib/jvm/java-7-openjdk-amd64 /usr/lib/jvm/java-6-sun
+#- name:
+- name: install hadoop
+  shell: wget http://psg.mtu.edu/pub/apache/hadoop/common/hadoop-1.2.1/hadoop_1.2.1-1_x86_64.deb -O /var/tmp/hadoop.deb; dpkg -i /var/tmp/hadoop.deb
+
+- name: configure hadoop masters
+  template: src=masters.template dest=/etc/hadoop/masters
+  notify: restart hadoop-datanode
+
+- name: configure hadoop slaves
+  template: src=slaves.template dest=/etc/hadoop/slaves
+  notify: restart hadoop-datanode
+
+- name: configure hadoop hdfs
+  template: src=hdfs-site.xml.template dest=/etc/hadoop/hdfs-site.xml
+  notify: restart hadoop-datanode

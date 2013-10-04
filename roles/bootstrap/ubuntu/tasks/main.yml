@@ -1,0 +1,2 @@
+- name: some basic packages
+  apt: name=zsh,vim,build-essential,curl,wget,libssl0.9.8  state=present

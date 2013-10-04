@@ -1,0 +1,5 @@
+[hadoop_slaves]
+node1
+node2
+[hadoop_masters]
+node10
